@@ -15,19 +15,18 @@ Dependencies:
 """
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/analyze": {"origins": "https://ai-sentiment-analysis.vercel.app"}})
 
 # Configuration for the sentiment analysis model
 SENTIMENT_MODEL_NAME = "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
 SENTIMENT_MODEL_REVISION = "714eb0f"
 
 # Initialize the sentiment analysis pipeline
-# This model is specifically trained for binary sentiment classification (positive/negative)
+# Using PyTorch (default) since the model is PyTorch-native
 sentiment_classifier = pipeline(
     task="sentiment-analysis",
     model=SENTIMENT_MODEL_NAME,
-    revision=SENTIMENT_MODEL_REVISION,
-    framework="tf"  # Using TensorFlow backend
+    revision=SENTIMENT_MODEL_REVISION
 )
 
 @app.route('/analyze', methods=['POST'])
@@ -78,4 +77,3 @@ def analyze_sentiment():
 
 if __name__ == '__main__':
     app.run(debug=True)
-

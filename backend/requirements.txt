@@ -3,3 +3,8 @@ flask-cors
 transformers
 tensorflow
 tf-keras
+torch
+tokenizers
+numpy
+requests
+accelerate

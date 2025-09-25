@@ -38,7 +38,7 @@ function App() {
 
     return (
         <div style={{ padding: "20px", maxWidth: "500px", margin: "0 auto" }}>
-            <h1>Sentiment Analysis</h1>
+            <h1>AI Sentiment Analysis Feedback App</h1>
             
             {/* Text input area for user feedback */}
             <textarea
